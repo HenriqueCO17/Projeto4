@@ -1,5 +1,34 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Projeto4.Models.Produto>
+
 @{
+    ViewData["Title"] = "Lista de Produtos";
 }
+
+<h2>Lista de Produtos</h2>
+
+<a href="/Produto/CadastrarProduto">Cadastrar Novo Produto</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.Nome</td>
+                <td>R$ @produto.Preco.ToString("F2")</td>
+                <td>@produto.Quantidade</td>
+                <td>
+                    <a href="/Produto/EditarProduto/@produto.Id">Editar</a> |
+                    <a href="/Produto/Excluir/@produto.Id" onclick="return confirm('Deseja realmente excluir este produto?');">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
