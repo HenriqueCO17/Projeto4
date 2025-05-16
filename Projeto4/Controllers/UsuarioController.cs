@@ -22,7 +22,6 @@ namespace Projeto4.Controllers
             var usuario = _loginRepositorio.ObterUsuario(email);
 
             if (usuario != null && usuario.Senha == senha)
-            {
                 return RedirectToAction("Index", "Produto");
             }
 
